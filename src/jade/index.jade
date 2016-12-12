@@ -1,0 +1,36 @@
+extends layout
+block title
+  title (9) Hey, Hang On
+block content
+  .splash
+    h1 Hangman
+    .btn-group
+      button#start Start Game
+      button#level Choose Level
+      button#info Info
+    .game-bg
+  .game#game
+    h2 Guess the Word
+    .graphic
+      svg(width="0", height="0", xmlns="http://www.w3.org/2000/svg",xmlns:svg="http://www.w3.org/2000/svg", viewBox="140 45 370 365")
+        g
+          line.draw(id="svg_0", y2="404.89844", x2="505.1381", y1="404.89844", x1="143", stroke-width="5", stroke="#3a454a", fill="none")
+          line(id="svg_1", y2="405.03531", x2="208", y1="51", x1="208", stroke-width="5", stroke="#3a454a", fill="none")
+          line(id="svg_2", y2="50.99146", x2="208.18232", y1="50.99146", x1="327.18652", stroke-width="5", stroke="#3a454a", fill="none")
+          line(id="svg_3", y2="51.03938", x2="252.76234", y1="95.78908", x1="208.01265", stroke-width="5", stroke="#3a454a", fill="none")
+        g#man
+          line(id="svg_4", y2="50.89923", x2="327.09351", y1="80.96582", x1="327.09351", stroke-width="5", stroke="#3a454a", fill="none")
+          ellipse(id="svg_5", ry="31", rx="24.5", cy="111.71143", cx="327.02539", stroke-width="5", stroke="#3a454a", fill="none")
+          line(id="svg_6", y2="240.37241", x2="327.51465", y1="142.42379", x1="327.51465", stroke-width="5", stroke="#3a454a", fill="none")
+          line(id="svg_7", y2="205.77205", x2="282.90324", y1="161.17086", x1="327.50443", stroke-width="5", stroke="#3a454a", fill="none")
+          line(id="svg_8", y2="205.89015", x2="327.76096", y1="161.28897", x1="372.36215", stroke-width="5", fill="none", stroke="#3a454a", transform="rotate(-90 350.0615539550781,183.58956909179685)")
+          line(id="svg_9", y2="284.35232", x2="283.06194", y1="239.75113", x1="327.66313", stroke-width="5", stroke="#3a454a", fill="none")
+          line(id="svg_10", y2="279.62409", x2="367.13285", y1="240.21972", x1="327.72848", stroke-width="5", stroke="#3a454a", fill="none")
+
+    .word#word
+    ul.keyboard#keyboard
+      each val in ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+        li.btn(data-letter=val)= val
+    .gameover#gameover
+      p Oh, boy. You did it. You killed him...
+      p By the way, it was "#[span#target]".

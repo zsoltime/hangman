@@ -1,0 +1,234 @@
+body
+  align-items: center
+  background-color: color(bluegrey, base)
+  background-image: radial-gradient(ellipse farthest-corner, rgba(white, .25) 0%, rgba(black, .25) 100%)
+  color: #fff
+  display: flex
+  height: 100%
+  justify-content: center
+  position: relative
+
+h1,
+h2
+  // color: rgba(black, .5)
+  color: #3a454a
+  font-size: 15vmin
+  font-style: italic
+  font-weight: 700
+  margin: 0
+  text-align: center
+  text-shadow: 1px 1px 0 rgba(white, .2)
+
+h2
+  font-size: 10vmin
+
+.splash
+  align-items: center
+  display: flex
+  flex-direction: column
+  height: 100%
+  justify-content: space-around
+  width: 100%
+  z-index: 2
+
+.btn-group
+  align-items: center
+  display: flex
+  flex-direction: column
+  flex-wrap: wrap
+  height: 35vh
+  justify-content: space-around
+
+button
+  border: 3px solid rgba(white, .5)
+  border-radius: 5px
+  box-shadow: 0 3px 6px -3px rgba(black, .3)
+  color: rgba(white, .75)
+  cursor: pointer
+  font-size: 7vmin
+  font-weight: 400
+  padding: .5rem 2rem
+  text-align: center
+  transition: all .3s ease
+  user-select: none
+
+  &:first-child
+    background: color(lime, dark)
+    // flex-basis: 75%
+
+    &:hover
+      background: darken(color(lime, dark), 3%)
+      // box-shadow: 0 3px 18px -3px rgba(black, .3)
+      transform: scale(.97)
+
+  &:nth-child(2),
+  &:nth-child(3)
+    background: color(bluegrey)
+    font-size: 4vmin
+
+.game
+  background-color: color(bluegrey, base)
+  background-image: radial-gradient(ellipse farthest-corner, rgba(white, .25) 0%, rgba(black, .25) 100%)
+  bottom: -100%
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+  height: 100%
+  left: 0
+  margin: auto
+  opacity: 0
+  overflow-y: auto
+  position: fixed
+  right: 0
+  top: auto
+  transform: scale(0)
+  transition: all .3s ease
+  z-index: 1
+
+  &.playing
+    bottom: 0
+    opacity: 1
+    transform: scale(1)
+    z-index: 9
+
+.word
+  display: flex
+  flex-direction: row
+  font-size: 5vmin
+  justify-content: space-around
+  width: 100%
+
+.placeholder
+  border-bottom: 2px solid rgba(white, .5)
+  display: block
+  margin: 0 1px
+  position: relative
+  text-align: center
+  text-transform: uppercase
+  width: 7vmin
+
+.letter
+  background: rgba(black, 1)
+  border-radius: 100%
+  color: rgba(white, .8)
+  opacity: 0
+  transform: scale(0)
+  transition: all .4s cubic-bezier(.37, -1.74, .76, 2.71)
+
+.revealed
+  background: rgba(black, 0)
+  border-radius: 0
+  opacity: 1
+  transform: scale(1)
+
+.keyboard
+  align-items: center
+  display: flex
+  flex-wrap: wrap
+  justify-content: center
+  list-style: none outside none
+  margin-top: 0
+  padding: 0
+  text-transform: uppercase
+
+.btn,
+.help,
+.close
+  align-items: center
+  background: color(lime)
+  border-radius: 2px
+  box-shadow: 0 4px 8px -6px rgba(black, .3)
+  color: #555
+  // color: rgba(black, .5)
+  cursor: pointer
+  display: flex
+  font-size: 6vmin
+  font-weight: 400
+  height: 10vmin
+  justify-content: center
+  margin: 1%
+  text-align: center
+  text-shadow: 1px 1px 0 rgba(white, .3)
+  transition: background .3s ease
+  user-select: none
+  width: 9vmin
+
+  &:hover
+    background: color(lime, dark)
+
+  &.used
+    cursor: default
+    opacity: .5
+
+.help,
+.close
+  left: 0
+  position: absolute
+  top: 0
+
+.close
+  left: auto
+  right: 0
+
+.graphic
+  display: flex
+  justify-content: center
+
+svg
+  height: 50vh
+  width: 100%
+
+line,
+ellipse
+  fill: none
+  stroke: #3a454a
+  stroke-dasharray: 365
+  stroke-dashoffset: 365
+  stroke-linecap: round
+  stroke-linejoin: round
+  stroke-width: 10
+  transition: stroke-dashoffset .8s ease
+
+.draw
+  stroke-dashoffset: 0
+
+.hanging
+  animation: 1s ease 0s 1 forwards firsthang, 2s 1s infinite cubic-bezier(0.65, 0.01, 0.44, 0.99) alternate hanging
+  transform-origin: 50% 55px
+
+.gameover
+  align-items: center
+  background: rgba(0, 0, 0, .8)
+  bottom: -30vh
+  display: flex
+  flex-direction: column
+  font-size: 6vmin
+  height: 30vh
+  justify-content: space-around
+  opacity: 0
+  position: fixed
+  transition: bottom .3s ease
+  width: 100%
+
+  &.active
+    bottom: 0
+    opacity: 1
+
+@keyframes hanging
+  from
+    transform: rotate(-10deg)
+
+  to
+    transform: rotate(10deg)
+
+@keyframes firsthang
+  from
+    transform: rotate(0)
+
+  to
+    transform: rotate(-10deg)
+
+@media (orientation: landscape)
+  .btn
+    height: 8vmin
+    width: 7vmin
