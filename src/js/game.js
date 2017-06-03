@@ -29,7 +29,7 @@ const Game = (function(window) {
 
   function bindEvents() {
     dom.start.addEventListener('click', start);
-    dom.keyboard.addEventListener('click', handleTyping)
+    dom.keyboard.addEventListener('click', handleTyping);
   }
 
   function start() {
@@ -52,14 +52,13 @@ const Game = (function(window) {
       return word;
     })
     .then(_ => {
-      return fetch('http://api.wordnik.com:80/v4/word.json/' + target +'/relatedWords?useCanonical=true&relationshipTypes=rhyme&limitPerRelationshipType=5&api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5')
+      return fetch('https://api.wordnik.com/v4/word.json/' + target +'/relatedWords?useCanonical=true&relationshipTypes=rhyme&limitPerRelationshipType=5&api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5')
     })
     .then(res => res.json())
     .then(res => {
       if (res.length !== 0) return;
-
     })
-    .then(_ => fetch('http://api.wordnik.com:80/v4/word.json/' + target + '/relatedWords?useCanonical=true&relationshipTypes=synonym&limitPerRelationshipType=5&api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5'))
+    .then(_ => fetch('https://api.wordnik.com/v4/word.json/' + target + '/relatedWords?useCanonical=true&relationshipTypes=synonym&limitPerRelationshipType=5&api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5'))
     .then(res => res.json())
     .then(res => console.log('synonyms are ', res))
     .catch(err => console.error(err));

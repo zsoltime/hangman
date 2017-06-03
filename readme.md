@@ -4,6 +4,8 @@ Oh, the ninth day of my [3 weeks challenge](https://github.com/zsoltime/game-cha
 
 It was a lovely project, I loved that it was so easy to work with [Wordnik's API](http://developer.wordnik.com). I think the most time consuming task was the drawing of Stick Man. And he just dies or never becomes a fully drawn character...
 
+Woo-hoo, you can find the React version here: [React Hangman](https://github.com/zsoltime/react-hangman) 
+
 ## User Stories
 
 - [x] I can start the game and see the number of characters of the secret word
